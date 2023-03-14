@@ -5,7 +5,7 @@ on:
     paths:
       - src/*
       - Cargo.toml
-      - renderer.py
+      - renderer.pyi
   pull_request: {}
     tags:
       - '*'
