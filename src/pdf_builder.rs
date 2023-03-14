@@ -383,10 +383,8 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         image_transform,
     );
 
-    let current_dir = env::current_dir().unwrap();
-
-    let arial = doc.add_external_font(File::open(current_dir.join("fonts/Arial.ttf")).unwrap()).unwrap();
-    let arial_bold = doc.add_external_font(File::open(current_dir.join("fonts/Arial Bold.ttf")).unwrap()).unwrap();
+    let arial = doc.add_external_font(File::open("./src/fonts/Arial.ttf").unwrap()).unwrap();
+    let arial_bold = doc.add_external_font(File::open("./src/fonts/Arial Bold.ttf").unwrap()).unwrap();
 
     let default_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 35] = [ 
         (INCOME_COORD, "Поступ. в банк плат.", 9.0, &arial, black_ref, None),
