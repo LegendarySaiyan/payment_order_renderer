@@ -14,3 +14,6 @@ classifiers = [
 
 [tool.maturin]
 features = ["pyo3/extension-module"]
+
+[project.urls]
+"Homepage" = "https://github.com/LegendarySaiyan/payment_order_renderer"
