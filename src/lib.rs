@@ -1,4 +1,5 @@
 use pyo3::{prelude::*};
+use pyo3::types::{PyDict, PyBytes};
 use chrono::prelude::{NaiveDate, NaiveDateTime};
 
 mod pdf_builder;
@@ -205,12 +206,42 @@ impl PaymentOrder {
 
 
 #[pyfunction]
-fn create_pdf(py: Python, payment_order: &mut PaymentOrder, path: &str) -> PyResult<Vec<u8>> {
+fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<Py<PyBytes>> {
+    let mut payment_order = PaymentOrder {
+        creation_date: payment_order_dict.get_item("creation_date").unwrap().extract().unwrap(),
+        last_transaction_date: payment_order_dict.get_item("last_transaction_date").unwrap().extract().unwrap(),
+        document_date: payment_order_dict.get_item("document_date").unwrap().extract().unwrap(),
+        document_number: payment_order_dict.get_item("document_number").unwrap().extract().unwrap(),
+        priority: payment_order_dict.get_item("priority").unwrap().extract().unwrap(),
+        transaction_type_code: payment_order_dict.get_item("transaction_type_code").unwrap().extract().unwrap(),
+        purpose: payment_order_dict.get_item("purpose").unwrap().extract().unwrap(),
+        payer_kpp: payment_order_dict.get_item("payer_kpp").unwrap().extract().unwrap(),
+        payer_inn: payment_order_dict.get_item("payer_inn").unwrap().extract().unwrap(),
+        payer_name: payment_order_dict.get_item("payer_name").unwrap().extract().unwrap(),
+        payer_bank: payment_order_dict.get_item("payer_bank").unwrap().extract().unwrap(),
+        payer_bank_address: payment_order_dict.get_item("payer_bank_address").unwrap().extract().unwrap(),
+        side_recipient_inn: payment_order_dict.get_item("side_recipient_inn").unwrap().extract().unwrap(),
+        side_recipient_bank: payment_order_dict.get_item("side_recipient_bank").unwrap().extract().unwrap(),
+        side_recipient_bank_address: payment_order_dict.get_item("side_recipient_bank_address").unwrap().extract().unwrap(),
+        side_recipient_name: payment_order_dict.get_item("side_recipient_name").unwrap().extract().unwrap(),
+        side_recipient_kpp: payment_order_dict.get_item("side_recipient_kpp").unwrap().extract().unwrap(),
+        transaction_sum: payment_order_dict.get_item("transaction_sum").unwrap().extract().unwrap(),
+        payer_account: payment_order_dict.get_item("payer_account").unwrap().extract().unwrap(),
+        payer_bank_code: payment_order_dict.get_item("payer_bank_code").unwrap().extract().unwrap(),
+        payer_cr_account: payment_order_dict.get_item("payer_cr_account").unwrap().extract().unwrap(),
+        side_recipient_bank_code: payment_order_dict.get_item("side_recipient_bank_code").unwrap().extract().unwrap(),
+        side_recipient_account: payment_order_dict.get_item("side_recipient_account").unwrap().extract().unwrap(),
+        side_recipient_cr_account: payment_order_dict.get_item("side_recipient_cr_account").unwrap().extract().unwrap(),
+        finance_administrator_name: payment_order_dict.get_item("finance_administrator_name").unwrap().extract().unwrap(),
+    };
+
     payment_order.reform_payment_ending();
     payment_order.validate_dates();
-    
-    let bytes = create_payment_report(payment_order, path);
-    Ok(bytes.unwrap())
+
+    let bytes = create_payment_report(&payment_order, path);
+    let py_bytes = PyBytes::new(py, &bytes.unwrap());
+
+    Ok(py_bytes.into())
 }
 
 
