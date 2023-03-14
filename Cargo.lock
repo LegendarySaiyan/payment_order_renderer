@@ -612,8 +612,8 @@ dependencies = [
 ]
 
 [[package]]
-name = "payment_order_renderer"
-version = "0.1.0"
+name = "payment_order_renderer1"
+version = "0.1.1"
 dependencies = [
  "chrono",
  "printpdf",
