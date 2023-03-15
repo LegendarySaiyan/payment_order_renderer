@@ -1,7 +1,6 @@
 use printpdf::*;
 use std::fs::File;
-use std::env;
-use std::path::Path;
+use std::io::Cursor;
 
 use crate::PaymentOrder; 
 
@@ -153,6 +152,10 @@ const HEAD_FULL_NAME_COORD: (Mm, Mm) = (Mm(167.1), Mm(35.9));
 const OKTMO_COORDS: (Mm, Mm, Mm, Mm) = (Mm(185.2), Mm(290.1), Mm(199.9), Mm(282.9));
 const PRIORITY_COORDS: (Mm, Mm, Mm, Mm) = (Mm(192.8), Mm(274.6), Mm(199.9), Mm(267.4));
 const BANK_SIGNS_COORDS: (Mm, Mm, Mm, Mm) = (Mm(151.9), Mm(114.1), Mm(187.2), Mm(106.5));
+
+
+const ARIAL: &[u8] = include_bytes!("../src/fonts/Arial.ttf");
+const ARIAL_BOLD: &[u8] = include_bytes!("../src/fonts/Arial Bold.ttf");
 
 
 fn add_rectangle(layer: &PdfLayerReference, coords: (Mm, Mm, Mm, Mm), color: &Color) {
@@ -383,8 +386,8 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         image_transform,
     );
 
-    let arial = doc.add_external_font(File::open("./src/fonts/Arial.ttf").unwrap()).unwrap();
-    let arial_bold = doc.add_external_font(File::open("./src/fonts/Arial Bold.ttf").unwrap()).unwrap();
+    let arial = doc.add_external_font(Cursor::new(ARIAL)).unwrap();
+    let arial_bold = doc.add_external_font(Cursor::new(ARIAL_BOLD)).unwrap();
 
     let default_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 35] = [ 
         (INCOME_COORD, "Поступ. в банк плат.", 9.0, &arial, black_ref, None),
