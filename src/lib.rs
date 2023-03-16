@@ -240,11 +240,11 @@ impl PaymentOrder {
 ///     'finance_administrator_name': 'А.В. Прокопчук',
 /// }
 
-// # Путь до вашего png изображения печати
-// path = "../pythonProject/pics/stamp_with_signature-1.png"
+/// Путь до вашего png изображения печати
+/// path = "../pythonProject/pics/stamp_with_signature-1.png"
 
-// # Результат возвращается в байтах
-// result = create_pdf(payment_order_dict, path)
+/// Результат возвращается в байтах
+/// result = create_pdf(payment_order_dict, path)
 #[pyfunction]
 fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<Py<PyBytes>> {
     let mut payment_order = PaymentOrder {
