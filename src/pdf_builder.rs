@@ -276,6 +276,7 @@ fn wrap_text_by_words(text: &str, font_size: f64, max_width: f64) -> Vec<String>
     lines
 }
 
+
 fn write_text_to_pdf(
     layer: &PdfLayerReference,
     coords: (Mm, Mm),
@@ -350,8 +351,6 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (MICRO_SHORT_VRT_LINE_COORD7, Mm(5.0), black_ref, "vertical"),
         (MICRO_SHORT_VRT_LINE_COORD8, Mm(5.0), black_ref, "vertical"),
         ];
-    
-    
 
     let rectangles: [((Mm, Mm, Mm, Mm), &Color); 3] = [
         (OKTMO_COORDS, black_ref),

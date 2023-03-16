@@ -205,6 +205,46 @@ impl PaymentOrder {
 }
 
 
+/// Функция ожидает словарь следующего вида:
+/// Если КПП получателя отсутствует, просто передавайте None
+/// 
+/// 
+/// from payment_order_renderer import create_pdf
+/// 
+/// 
+/// payment_order_dict = {
+///     'creation_date': '2021-07-21T00:00:00+05:00',
+///     'last_transaction_date': '2021-07-21',
+///     'document_date': '2021-07-21',
+///     'document_number': '6000',
+///     'priority': '5',
+///     'transaction_type_code': '01',
+///     'purpose': 'Оплата по договору (номер/дата) без НДС',
+///     'payer_kpp': '773601001',
+///     'payer_inn': '280267860010',
+///     'payer_name': 'ООО "Рога и копыта"',
+///     'payer_bank': 'БАНК ПЛАТЕЛЬЩИК',
+///     'payer_bank_address': 'г. Москва',
+///     'side_recipient_inn': '7839443197',
+///     'side_recipient_bank': 'ПАО Сбербанк',
+///     'side_recipient_bank_address': 'г. Екатернибург',
+///     'side_recipient_name': 'Дядя Толик',
+///     'side_recipient_kpp': None,
+///     'transaction_sum': '1488.23',
+///     'payer_account': '40702810401500014770',
+///     'payer_bank_code': '044525989',
+///     'payer_cr_account': '30101810845250000999',
+///     'side_recipient_bank_code': '044525598',
+///     'side_recipient_account': '42306810963160914857',
+///     'side_recipient_cr_account': '30101810845250000999',
+///     'finance_administrator_name': 'А.В. Прокопчук',
+/// }
+
+// # Путь до вашего png изображения печати
+// path = "../pythonProject/pics/stamp_with_signature-1.png"
+
+// # Результат возвращается в байтах
+// result = create_pdf(payment_order_dict, path)
 #[pyfunction]
 fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<Py<PyBytes>> {
     let mut payment_order = PaymentOrder {
