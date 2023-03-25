@@ -1,6 +1,5 @@
 use pyo3::{prelude::*};
 use pyo3::types::{PyDict, PyBytes};
-use chrono::prelude::{NaiveDate, NaiveDateTime};
 
 mod pdf_builder;
 use pdf_builder::create_payment_report;
@@ -180,31 +179,6 @@ impl PaymentOrder {
 }
 
 
-impl PaymentOrder {
-    fn validate_dates(&mut self) {
-        /*  Приводим даты из вида "2023-02-21" и "2023-02-21T09:39:47.177000+00:00" 
-        к виду "21-02-2023" 
-        */
-        let mut dates = [
-            &mut self.creation_date,
-            &mut self.last_transaction_date,
-            &mut self.document_date,
-        ];
-        
-        for date in dates.iter_mut() {
-            let parsed_date = match NaiveDateTime::parse_from_str(date, "%Y-%m-%dT%H:%M:%S%.f%z") {
-                Ok(dt) => dt.date(),
-                Err(_) => match NaiveDate::parse_from_str(date, "%Y-%m-%d") {
-                    Ok(d) => d,
-                    Err(_) => panic!("Некорректный формат даты: {}", date),
-                },
-            };
-            **date = parsed_date.format("%d.%m.%Y").to_string();
-        }
-    }
-}
-
-
 /// Функция ожидает словарь следующего вида:
 /// Если КПП получателя отсутствует, просто передавайте None
 /// 
@@ -276,7 +250,6 @@ fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<P
     };
 
     payment_order.reform_payment_ending();
-    payment_order.validate_dates();
 
     let bytes = create_payment_report(&payment_order, path);
     let py_bytes = PyBytes::new(py, &bytes.unwrap());
