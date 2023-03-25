@@ -11,29 +11,29 @@ const LONG_HRZ_LINE_COORD3: (Mm, Mm) = (Mm(19.6), Mm(152.0));
 const LONG_HRZ_LINE_COORD4: (Mm, Mm) = (Mm(19.6), Mm(147.0));
 const LONG_HRZ_LINE_COORD5: (Mm, Mm) = (Mm(19.6), Mm(123.0));
 
-const MEDIUM_LONG_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(19.6), Mm(218.2));
-const MEDIUM_LONG_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(19.6), Mm(188.2));
+const MEDIUM_LONG_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(19.6), Mm(217.8));
+const MEDIUM_LONG_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(19.6), Mm(187.8));
 
 const SHORT_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(79.5), Mm(107.0));
 const SHORT_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(79.5), Mm(92.0));
 
-const BIK_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(119.6), Mm(213.2));
-const BIK_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(119.6), Mm(198.4));
-const TYPEH_RZ_LINE_COORD:(Mm, Mm) = (Mm(119.6), Mm(168.5));
-const PURPOSE_HRZ_LINE_COORD: (Mm, Mm) = (Mm(119.6), Mm(163.5));
+const BIK_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(119.6), Mm(212.9));
+const BIK_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(119.6), Mm(197.9));
+const TYPEH_RZ_LINE_COORD:(Mm, Mm) = (Mm(119.6), Mm(168.2));
+const PURPOSE_HRZ_LINE_COORD: (Mm, Mm) = (Mm(119.6), Mm(163.2));
 const MIDDLE_SHORT_RZ_LINE_COORD1:(Mm, Mm) = (Mm(119.6), Mm(152.0));
-const MIDDLE_SHORT_RZ_LINE_COORD2: (Mm, Mm) = (Mm(154.4), Mm(168.5));
-const MIDDLE_SHORT_RZ_LINE_COORD3: (Mm, Mm) = (Mm(154.4), Mm(163.5));
+const MIDDLE_SHORT_RZ_LINE_COORD2: (Mm, Mm) = (Mm(154.4), Mm(168.2));
+const MIDDLE_SHORT_RZ_LINE_COORD3: (Mm, Mm) = (Mm(154.4), Mm(163.2));
 
-const DATE_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(19.6), Mm(282.3));
-const DATE_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(64.6), Mm(282.3));
-const DATE_HRZ_LINE_COORD3: (Mm, Mm) = (Mm(83.0), Mm(267.3));
-const TYPE_HRZ_LINE_COORD: (Mm, Mm) = (Mm(128.0), Mm(267.3));
+const DATE_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(19.6), Mm(282.1));
+const DATE_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(64.6), Mm(282.1));
+const DATE_HRZ_LINE_COORD3: (Mm, Mm) = (Mm(83.0), Mm(266.8));
+const TYPE_HRZ_LINE_COORD: (Mm, Mm) = (Mm(128.0), Mm(266.8));
 
 const MEDIUM_HRZ_LINE_COORD1: (Mm, Mm) = (Mm(19.6), Mm(243.0));
-const MEDIUM_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(119.6), Mm(232.0));
-const MEDIUM_HRZ_LINE_COORD3: (Mm, Mm) = (Mm(119.6), Mm(173.3));
-const MEDIUM_HRZ_LINE_COORD4: (Mm, Mm) = (Mm(19.6), Mm(183.2));
+const MEDIUM_HRZ_LINE_COORD2: (Mm, Mm) = (Mm(119.6), Mm(232.8));
+const MEDIUM_HRZ_LINE_COORD3: (Mm, Mm) = (Mm(119.6), Mm(173.0));
+const MEDIUM_HRZ_LINE_COORD4: (Mm, Mm) = (Mm(19.6), Mm(183.0));
 
 const SHORT_VRT_LINE_COORD1: (Mm, Mm) = (Mm(39.6), Mm(248.0));
 const SHORT_VRT_LINE_COORD2: (Mm, Mm) = (Mm(154.4), Mm(152.0));
@@ -53,58 +53,58 @@ const MICRO_SHORT_VRT_LINE_COORD8: (Mm, Mm) = (Mm(189.7), Mm(147.0));
 
 
 //Дефолтный текст
-const INCOME_COORD: (Mm, Mm) = (Mm(22.4), Mm(279.0));
-const OUTCOME_COORD: (Mm, Mm) = (Mm(67.3), Mm(279.0));
+const INCOME_COORD: (Mm, Mm) = (Mm(22.4), Mm(279.3));
+const OUTCOME_COORD: (Mm, Mm) = (Mm(67.3), Mm(279.3));
 
-const DATE_COORD: (Mm, Mm) = (Mm(97.0), Mm(263.7));
-const DIGITAL_COORD: (Mm, Mm) = (Mm(137.2), Mm(268.0));
-const ORDER_TYPE_COORD: (Mm, Mm) = (Mm(137.2), Mm(263.7));
-const PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(19.8), Mm(267.5));//bold
+const DATE_COORD: (Mm, Mm) = (Mm(97.0), Mm(264.0));
+const DIGITAL_COORD: (Mm, Mm) = (Mm(137.2), Mm(267.8));
+const ORDER_TYPE_COORD: (Mm, Mm) = (Mm(136.4), Mm(264.0));
+const PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(19.8), Mm(267.8));//bold
 
 const OKTMO_NUMBER_COORD: (Mm, Mm) = (Mm(186.4), Mm(285.3));
 
 const LITERAL_SUM_COORD: (Mm, Mm) = (Mm(19.8), Mm(259.9)); // width Mm(19)
 
-const INN1_COORD: (Mm, Mm) = (Mm(19.8), Mm(244.4));
-const KPP1_COORD: (Mm, Mm) = (Mm(70.4), Mm(244.4));
-const SUM_COORD: (Mm, Mm) = (Mm(120.1), Mm(244.4));
+const INN1_COORD: (Mm, Mm) = (Mm(19.8), Mm(244.7));
+const KPP1_COORD: (Mm, Mm) = (Mm(70.4), Mm(244.7));
+const SUM_COORD: (Mm, Mm) = (Mm(120.1), Mm(244.7));
 
 const ACCOUNT_NUMBER1_COORD: (Mm, Mm) = (Mm(120.1), Mm(229.2));
 
-const PAYER_COORD: (Mm, Mm) = (Mm(19.8), Mm(218.8));
+const PAYER_COORD: (Mm, Mm) = (Mm(19.8), Mm(219.1));
 
 const BIK1_COORD: (Mm, Mm) = (Mm(120.1), Mm(214.2));
 const ACCOUNT_NUMBER2_COORD: (Mm, Mm) = (Mm(120.1), Mm(209.6));
 
-const PAYER_BANK_COORD: (Mm, Mm) = (Mm(19.8), Mm(204.0));
+const PAYER_BANK_COORD: (Mm, Mm) = (Mm(19.8), Mm(204.3));
 
-const BIK2_COORD: (Mm, Mm) = (Mm(120.1), Mm(199.5));
-const ACCOUNT_NUMBER3_COORD: (Mm, Mm) = (Mm(120.1), Mm(194.6));
+const BIK2_COORD: (Mm, Mm) = (Mm(120.1), Mm(199.8));
+const ACCOUNT_NUMBER3_COORD: (Mm, Mm) = (Mm(120.1), Mm(194.9));
 
-const PAYEE_BANK_COORD: (Mm, Mm) = (Mm(19.8), Mm(188.8));
+const PAYEE_BANK_COORD: (Mm, Mm) = (Mm(19.8), Mm(189.1));
 
-const INN2_COORD: (Mm, Mm) = (Mm(19.8), Mm(184.5));
-const KPP2_COORD: (Mm, Mm) = (Mm(70.4), Mm(184.5));
-const ACCOUNT_NUMBER4_COORD: (Mm, Mm) = (Mm(120.1), Mm(184.5));
+const INN2_COORD: (Mm, Mm) = (Mm(19.8), Mm(184.8));
+const KPP2_COORD: (Mm, Mm) = (Mm(70.4), Mm(184.8));
+const ACCOUNT_NUMBER4_COORD: (Mm, Mm) = (Mm(120.1), Mm(184.8));
 
-const PAYMENT_TYPE_COORD: (Mm, Mm) = (Mm(120.1), Mm(169.2));
-const PAYMENT_TERM_COORD: (Mm, Mm) = (Mm(154.9), Mm(169.2));
+const PAYMENT_TYPE_COORD: (Mm, Mm) = (Mm(120.1), Mm(169.8));
+const PAYMENT_TERM_COORD: (Mm, Mm) = (Mm(154.9), Mm(169.8));
 
-const PAYMENT_PURPOSE_COORD: (Mm, Mm) = (Mm(120.1), Mm(164.2));
-const PAYMENT_QUE_COORD: (Mm, Mm) = (Mm(154.9), Mm(164.2));
+const PAYMENT_PURPOSE_COORD: (Mm, Mm) = (Mm(120.1), Mm(164.5));
+const PAYMENT_QUE_COORD: (Mm, Mm) = (Mm(154.9), Mm(164.8));
 
 const PAYMENT_CODE_COORD: (Mm, Mm) = (Mm(120.1), Mm(159.8));
 const ZERO_CODE_COORD: (Mm, Mm) = (Mm(135.1), Mm(159.8));
 const PAYMENT_RESERVE_COORD: (Mm, Mm) = (Mm(154.9), Mm(159.8));
 
-const PAYEE_COORD: (Mm, Mm) = (Mm(19.8), Mm(152.7));
+const PAYEE_COORD: (Mm, Mm) = (Mm(19.8), Mm(153.0));
 
-const PAYMENT_PURPOSE_FULL_COORD: (Mm, Mm) = (Mm(20.1), Mm(124.0));
+const PAYMENT_PURPOSE_FULL_COORD: (Mm, Mm) = (Mm(20.1), Mm(124.3));
 
 const SIGN_COORD: (Mm, Mm) = (Mm(103.4), Mm(119.5));
 const BANK_SIGNS_COORD: (Mm, Mm) = (Mm(159.0), Mm(119.5));
 
-const PAID_COORD: (Mm, Mm) = (Mm(161.5), Mm(111.3));//blue
+const PAID_COORD: (Mm, Mm) = (Mm(162.8), Mm(111.3));//blue
 
 const STAMP_COORD: (Mm, Mm) = (Mm(46.5), Mm(101.2));
 
@@ -113,7 +113,7 @@ const STAMP_COORD: (Mm, Mm) = (Mm(46.5), Mm(101.2));
 const DATA_INCOME_COORD: (Mm, Mm) = (Mm(29.4), Mm(282.8));
 const DATA_OUTCOME_COORD: (Mm, Mm) = (Mm(74.4), Mm(282.8));
 const DATA_PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(66.5), Mm(267.5));//bold
-const DATA_DATE_COORD: (Mm, Mm) = (Mm(92.7), Mm(268.0));
+const DATA_DATE_COORD: (Mm, Mm) = (Mm(92.7), Mm(267.7));
 
 const DATA_INN1_COORD: (Mm, Mm) = (Mm(28.7), Mm(244.4));
 const DATA_KPP1_COORD: (Mm, Mm) = (Mm(78.7), Mm(244.4));
@@ -138,20 +138,20 @@ const DATA_ACCOUNT_NUMBER4_COORD: (Mm, Mm) = (Mm(135.1), Mm(184.5));
 
 const DATA_PAYEE_COORD: (Mm, Mm) = (Mm(19.8), Mm(179.9));
 
-const DATA_PAYMENT_CODE_COORD: (Mm, Mm) = (Mm(135.1), Mm(169.7));
+const DATA_PAYMENT_CODE_COORD: (Mm, Mm) = (Mm(135.1), Mm(169.2));
 
-const DATA_PAYMENT_QUE_COORD: (Mm, Mm) = (Mm(175.0), Mm(164.2));
-const DATA_FULL_PURPOSE_COORD: (Mm, Mm) = (Mm(19.8), Mm(143.6)); //180.1
+const DATA_PAYMENT_QUE_COORD: (Mm, Mm) = (Mm(175.0), Mm(164.8));
+const DATA_FULL_PURPOSE_COORD: (Mm, Mm) = (Mm(19.8), Mm(143.9)); //180.1
 
-const DATA_PAID: (Mm, Mm) = (Mm(162.0), Mm(107.8));
+const DATA_PAID: (Mm, Mm) = (Mm(163.6), Mm(107.8));
 
 const HEAD_FULL_NAME_COORD: (Mm, Mm) = (Mm(167.1), Mm(35.9));
 
 
 //Координаты прямоугольных форм
-const OKTMO_COORDS: (Mm, Mm, Mm, Mm) = (Mm(185.2), Mm(290.1), Mm(199.9), Mm(282.9));
-const PRIORITY_COORDS: (Mm, Mm, Mm, Mm) = (Mm(192.8), Mm(274.6), Mm(199.9), Mm(267.4));
-const BANK_SIGNS_COORDS: (Mm, Mm, Mm, Mm) = (Mm(151.9), Mm(114.1), Mm(187.2), Mm(106.5));
+const OKTMO_COORDS: (Mm, Mm, Mm, Mm) = (Mm(185.2), Mm(290.4), Mm(199.9), Mm(283.1));
+const PRIORITY_COORDS: (Mm, Mm, Mm, Mm) = (Mm(192.8), Mm(274.6), Mm(199.9), Mm(267.6));
+const BANK_SIGNS_COORDS: (Mm, Mm, Mm, Mm) = (Mm(151.9), Mm(114.1), Mm(187.2), Mm(106.8));
 
 
 const ARIAL: &[u8] = include_bytes!("../src/fonts/Arial.ttf");
@@ -295,7 +295,7 @@ fn write_text_to_pdf(
 
     for (index, line) in text_lines.iter().enumerate() {
         let y_coord = if index != 0 {
-            coords.1 - Mm(4 as f64)
+            coords.1 - Mm(3 as f64)
         } else {
             coords.1
         };
@@ -361,7 +361,7 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
     let (mut doc, page1, layer1) = PdfDocument::new(
         "payment_order",
         Mm(210.0),
-        Mm(297.0),
+        Mm(297.3),
         "Layer 1",
     );
 
@@ -422,7 +422,7 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (PAYMENT_PURPOSE_FULL_COORD, "Назначение платежа", 9.0, &arial, black_ref, None),
         (SIGN_COORD, "Подписи", 9.0, &arial, black_ref, None),
         (BANK_SIGNS_COORD, "Отметки банка", 9.0, &arial, black_ref, None),
-        (PAID_COORD, "ОПЛАЧЕНО", 8.0, &arial, blue_ref, None),
+        (PAID_COORD, "ОПЛАЧЕНО", 7.0, &arial, blue_ref, None),
         (STAMP_COORD, "М.П.", 9.0, &arial, black_ref, None),
     ];
 
@@ -457,8 +457,8 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (DATA_PAYMENT_CODE_COORD, payment_order.transaction_type_code.as_str(), 9.0, &arial, black_ref, None),
         (DATA_PAYMENT_QUE_COORD, payment_order.priority.as_str(), 9.0, &arial, black_ref, None),
         (DATA_FULL_PURPOSE_COORD, payment_order.purpose.as_str(), 9.0, &arial, black_ref, Some(Mm(180.1))),
-        (DATA_PAID, payment_order.last_transaction_date.as_str(), 8.0, &arial, blue_ref, None),
-        (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 12.0, &arial, black_ref, None),
+        (DATA_PAID, payment_order.last_transaction_date.as_str(), 6.0, &arial, blue_ref, None),
+        (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 9.0, &arial, black_ref, None),
     ];
 
     for (coords, length, color, line_type) in lines.iter() {
