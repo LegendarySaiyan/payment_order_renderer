@@ -457,7 +457,7 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (DATA_PAYMENT_CODE_COORD, payment_order.transaction_type_code.as_str(), 9.0, &arial, black_ref, None),
         (DATA_PAYMENT_QUE_COORD, payment_order.priority.as_str(), 9.0, &arial, black_ref, None),
         (DATA_FULL_PURPOSE_COORD, payment_order.purpose.as_str(), 9.0, &arial, black_ref, Some(Mm(180.1))),
-        (DATA_PAID, payment_order.last_transaction_date.as_str(), 6.0, &arial, blue_ref, None),
+        (DATA_PAID, payment_order.last_transaction_date.as_str(), 8.0, &arial, blue_ref, None),
         (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 9.0, &arial, black_ref, None),
     ];
 

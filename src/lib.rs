@@ -187,9 +187,9 @@ impl PaymentOrder {
 /// 
 /// 
 /// payment_order_dict = {
-///     'creation_date': '2021-07-21T00:00:00+05:00',
-///     'last_transaction_date': '2021-07-21',
-///     'document_date': '2021-07-21',
+///     'creation_date': '21.07.2021',
+///     'last_transaction_date': '21.07.2021',
+///     'document_date': '21.07.2021',
 ///     'document_number': '6000',
 ///     'priority': '5',
 ///     'transaction_type_code': '01',
