@@ -114,10 +114,11 @@ const DATA_INCOME_COORD: (Mm, Mm) = (Mm(29.4), Mm(282.8));
 const DATA_OUTCOME_COORD: (Mm, Mm) = (Mm(74.4), Mm(282.8));
 const DATA_PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(66.5), Mm(267.5));//bold
 const DATA_DATE_COORD: (Mm, Mm) = (Mm(92.7), Mm(267.7));
+const DATA_LITERAL_SUM_COORD: (Mm, Mm) = (Mm(41.4), Mm(259.9)); // width Mm(158.5)
 
-const DATA_INN1_COORD: (Mm, Mm) = (Mm(28.7), Mm(244.4));
-const DATA_KPP1_COORD: (Mm, Mm) = (Mm(78.7), Mm(244.4));
-const DATA_SUM_COORD: (Mm, Mm) = (Mm(135.1), Mm(244.4));
+const DATA_INN1_COORD: (Mm, Mm) = (Mm(28.7), Mm(244.7));
+const DATA_KPP1_COORD: (Mm, Mm) = (Mm(78.7), Mm(244.7));
+const DATA_SUM_COORD: (Mm, Mm) = (Mm(135.1), Mm(244.7));
 
 const DATA_PAYER_COORD: (Mm, Mm) = (Mm(19.8), Mm(239.6)); //99.5
 
@@ -132,9 +133,9 @@ const DATA_PAYEE_BANK_COORD: (Mm, Mm) = (Mm(19.8), Mm(199.5));
 const DATA_BIK2_COORD: (Mm, Mm) = (Mm(135.1), Mm(199.5));
 const DATA_ACCOUNT_NUMBER3_COORD: (Mm, Mm) = (Mm(135.1), Mm(194.6));
 
-const DATA_INN2_COORD: (Mm, Mm) = (Mm(28.7), Mm(184.5));
-const DATA_KPP2_COORD: (Mm, Mm) = (Mm(78.7), Mm(184.5));
-const DATA_ACCOUNT_NUMBER4_COORD: (Mm, Mm) = (Mm(135.1), Mm(184.5));
+const DATA_INN2_COORD: (Mm, Mm) = (Mm(28.7), Mm(184.8));
+const DATA_KPP2_COORD: (Mm, Mm) = (Mm(78.7), Mm(184.8));
+const DATA_ACCOUNT_NUMBER4_COORD: (Mm, Mm) = (Mm(135.1), Mm(184.8));
 
 const DATA_PAYEE_COORD: (Mm, Mm) = (Mm(19.8), Mm(179.9));
 
@@ -434,10 +435,17 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         None => String::from(""),
     };
 
-    let data_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 24] = [ 
+    let literal_sum: String = match &payment_order.literal_sum {
+        Some(sum) => sum.to_string(),
+        None => String::from(""),
+    };
+
+
+    let data_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 25] = [ 
         (DATA_INCOME_COORD, payment_order.creation_date.as_str(), 9.0, &arial, black_ref, None),
         (DATA_OUTCOME_COORD, payment_order.last_transaction_date.as_str(), 9.0, &arial, black_ref, None),
         (DATA_PAYMENT_ORDER_COORD, payment_order.document_number.as_str(), 9.0, &arial_bold, black_ref, None),
+        (DATA_LITERAL_SUM_COORD, literal_sum.as_str(), 9.0, &arial, black_ref, Some(Mm(158.5))),
         (DATA_DATE_COORD, payment_order.document_date.as_str(), 9.0, &arial, black_ref, None),
         (DATA_INN1_COORD, payment_order.payer_inn.as_str(), 9.0, &arial, black_ref, None),
         (DATA_KPP1_COORD, payment_order.payer_kpp.as_str(), 9.0, &arial, black_ref, None),
@@ -457,24 +465,24 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (DATA_PAYMENT_CODE_COORD, payment_order.transaction_type_code.as_str(), 9.0, &arial, black_ref, None),
         (DATA_PAYMENT_QUE_COORD, payment_order.priority.as_str(), 9.0, &arial, black_ref, None),
         (DATA_FULL_PURPOSE_COORD, payment_order.purpose.as_str(), 9.0, &arial, black_ref, Some(Mm(180.1))),
-        (DATA_PAID, payment_order.last_transaction_date.as_str(), 8.0, &arial, blue_ref, None),
-        (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_PAID, payment_order.last_transaction_date.as_str(), 6.7, &arial, blue_ref, None),
+        (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 10.0, &arial, black_ref, None),
     ];
 
-    for (coords, length, color, line_type) in lines.iter() {
-        add_line(&current_layer, *coords, *length, color, line_type)
+    for &((coords_x, coords_y), length, color, line_type) in lines.iter() {
+        add_line(&current_layer, (coords_x, coords_y), length, color, line_type)
     };
 
-    for (coords, color,) in rectangles.iter() {
-        add_rectangle(&current_layer, *coords, color);
+    for &((coords_a, coords_b, coords_c, coords_d), color,) in rectangles.iter() {
+        add_rectangle(&current_layer, (coords_a, coords_b, coords_c, coords_d), color);
     };
 
-    for (coords, text, size, font, color, field_width) in default_texts.iter() {
-        write_text_to_pdf(&current_layer, *coords, text, *size, font, color, *field_width);
+    for &((coords_x, coords_y), text, size, font, color, field_width) in default_texts.iter() {
+        write_text_to_pdf(&current_layer, (coords_x, coords_y), text, size, font, color, field_width);
     };
 
-    for (coords, text, size, font, color, field_width) in data_texts.iter() {
-        write_text_to_pdf(&current_layer, *coords, text, *size, font, color, *field_width);
+    for &((coords_x, coords_y), text, size, font, color, field_width) in data_texts.iter() {
+        write_text_to_pdf(&current_layer, (coords_x, coords_y), text, size, font, color, field_width);
     };
 
     doc = doc.with_conformance(PdfConformance::Custom(CustomPdfConformance {

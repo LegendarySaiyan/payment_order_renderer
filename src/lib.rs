@@ -59,7 +59,10 @@ pub struct PaymentOrder {
     side_recipient_account: String,
     #[pyo3(get, set)]
     side_recipient_cr_account: String,
+    #[pyo3(get, set)]
     finance_administrator_name: String,
+    #[pyo3(get, set)]
+    literal_sum: Option<String>,
 }
 
 
@@ -92,6 +95,7 @@ impl PaymentOrder {
         side_recipient_account,
         side_recipient_cr_account,
         finance_administrator_name,
+        literal_sum,
     ))]
     fn new(
         creation_date: String,
@@ -123,6 +127,7 @@ impl PaymentOrder {
         side_recipient_account: String,
         side_recipient_cr_account: String,
         finance_administrator_name: String,
+        literal_sum: Option<String>,
     ) -> Self {
         PaymentOrder {
             creation_date,
@@ -153,6 +158,7 @@ impl PaymentOrder {
             side_recipient_account,
             side_recipient_cr_account,
             finance_administrator_name,
+            literal_sum,
         }
     }
 }
@@ -180,7 +186,8 @@ impl PaymentOrder {
 
 
 /// Функция ожидает словарь следующего вида:
-/// Если КПП получателя отсутствует, просто передавайте None
+/// Поля 'side_recipient_kpp' и  'literal_sum' необязательные
+/// в случае их отсутствия просто передавайте None
 /// 
 /// 
 /// from payment_order_renderer import create_pdf
@@ -212,6 +219,7 @@ impl PaymentOrder {
 ///     'side_recipient_account': '42306810963160914857',
 ///     'side_recipient_cr_account': '30101810845250000999',
 ///     'finance_administrator_name': 'А.В. Прокопчук',
+///     'literal_sum': 'одна тысяча четыреста восемьдесят рублей 00 копеек',
 /// }
 
 /// Путь до вашего png изображения печати
@@ -247,6 +255,7 @@ fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<P
         side_recipient_account: payment_order_dict.get_item("side_recipient_account").unwrap().extract().unwrap(),
         side_recipient_cr_account: payment_order_dict.get_item("side_recipient_cr_account").unwrap().extract().unwrap(),
         finance_administrator_name: payment_order_dict.get_item("finance_administrator_name").unwrap().extract().unwrap(),
+        literal_sum: payment_order_dict.get_item("literal_sum").unwrap().extract().unwrap(),
     };
 
     payment_order.reform_payment_ending();

@@ -15,7 +15,8 @@ from payment_order_renderer import create_pdf
 
 
 # Функция ожидает словарь следующего вида:
-# Если КПП получателя отсутствует, просто передавайте None
+# Поля 'side_recipient_kpp' и  'literal_sum' необязательные
+# в случае их отсутствия просто передавайте None
 payment_order_dict = {
         'creation_date': '2021-07-21T00:00:00+05:00',
         'last_transaction_date': '2021-07-21',
@@ -42,6 +43,7 @@ payment_order_dict = {
         'side_recipient_account': '42306810963160914857',
         'side_recipient_cr_account': '30101810845250000999',
         'finance_administrator_name': 'А.В. Прокопчук',
+        'literal_sum': 'одна тысяча четыреста восемьдесят рублей 00 копеек',
     }
 
 # Путь до вашего png изображения печати
