@@ -490,7 +490,7 @@ dependencies = [
 
 [[package]]
 name = "payment_order_renderer"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "printpdf",
  "pyo3",

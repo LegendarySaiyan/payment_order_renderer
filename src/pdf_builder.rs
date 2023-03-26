@@ -112,7 +112,7 @@ const STAMP_COORD: (Mm, Mm) = (Mm(46.5), Mm(101.2));
 //Текст с данными
 const DATA_INCOME_COORD: (Mm, Mm) = (Mm(29.4), Mm(282.8));
 const DATA_OUTCOME_COORD: (Mm, Mm) = (Mm(74.4), Mm(282.8));
-const DATA_PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(66.5), Mm(267.5));//bold
+const DATA_PAYMENT_ORDER_COORD: (Mm, Mm) = (Mm(66.5), Mm(267.8));//bold
 const DATA_DATE_COORD: (Mm, Mm) = (Mm(92.7), Mm(267.7));
 const DATA_LITERAL_SUM_COORD: (Mm, Mm) = (Mm(41.4), Mm(259.9)); // width Mm(158.5)
 
