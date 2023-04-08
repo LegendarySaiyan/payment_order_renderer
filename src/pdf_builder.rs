@@ -94,7 +94,6 @@ const PAYMENT_PURPOSE_COORD: (Mm, Mm) = (Mm(120.1), Mm(164.5));
 const PAYMENT_QUE_COORD: (Mm, Mm) = (Mm(154.9), Mm(164.8));
 
 const PAYMENT_CODE_COORD: (Mm, Mm) = (Mm(120.1), Mm(159.8));
-const ZERO_CODE_COORD: (Mm, Mm) = (Mm(135.1), Mm(159.8));
 const PAYMENT_RESERVE_COORD: (Mm, Mm) = (Mm(154.9), Mm(159.8));
 
 const PAYEE_COORD: (Mm, Mm) = (Mm(19.8), Mm(153.0));
@@ -147,6 +146,19 @@ const DATA_FULL_PURPOSE_COORD: (Mm, Mm) = (Mm(19.8), Mm(143.9)); //180.1
 const DATA_PAID: (Mm, Mm) = (Mm(163.6), Mm(107.8));
 
 const HEAD_FULL_NAME_COORD: (Mm, Mm) = (Mm(167.1), Mm(35.9));
+
+
+//Необязательные параметры
+const DATA_PURPOSE_CODE: (Mm, Mm) = (Mm(135.1), Mm(164.8));
+const DATA_UIN_CODE: (Mm, Mm) = (Mm(135.1), Mm(159.8));
+const DATA_STATUS: (Mm, Mm) = (Mm(194.5), Mm(270.1));
+const DATA_CBC: (Mm, Mm) = (Mm(19.8), Mm(148.7));
+const DATA_OKATO: (Mm, Mm) = (Mm(65.0), Mm(148.7));
+const DATA_REASON: (Mm, Mm) = (Mm(95.2), Mm(148.7));
+const DATA_PERIOD: (Mm, Mm) = (Mm(105.2), Mm(148.7));
+const DATA_REASON_NUMBER: (Mm, Mm) = (Mm(130.3), Mm(148.7));
+const DATA_REASON_DATE: (Mm, Mm) = (Mm(165.4), Mm(148.7));
+const DATA_FIELD_110: (Mm, Mm) = (Mm(190.2), Mm(148.7));
 
 
 //Координаты прямоугольных форм
@@ -389,7 +401,7 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
     let arial = doc.add_external_font(Cursor::new(ARIAL)).unwrap();
     let arial_bold = doc.add_external_font(Cursor::new(ARIAL_BOLD)).unwrap();
 
-    let default_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 35] = [ 
+    let default_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 34] = [ 
         (INCOME_COORD, "Поступ. в банк плат.", 9.0, &arial, black_ref, None),
         (OUTCOME_COORD, "Списано со сч. плат.", 9.0, &arial, black_ref, None),
         (DATE_COORD, "Дата", 9.0, &arial, black_ref, None),
@@ -417,7 +429,6 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (PAYMENT_PURPOSE_COORD, "Наз. пл.", 9.0, &arial, black_ref, None),
         (PAYMENT_QUE_COORD, "Очер. плат.", 9.0, &arial, black_ref, None),
         (PAYMENT_CODE_COORD, "Код", 9.0, &arial, black_ref, None),
-        (ZERO_CODE_COORD, "0", 9.0, &arial, black_ref, None),
         (PAYMENT_RESERVE_COORD, "Рез. поле", 9.0, &arial, black_ref,  None),
         (PAYEE_COORD, "Получатель", 9.0, &arial, black_ref, None),
         (PAYMENT_PURPOSE_FULL_COORD, "Назначение платежа", 9.0, &arial, black_ref, None),
@@ -440,8 +451,57 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         None => String::from(""),
     };
 
+    let status: String = match &payment_order.status {
+        Some(status) => status.to_string(),
+        None => String::from(""),
+    };
 
-    let data_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 25] = [ 
+    let purpose_code: String = match &payment_order.purpose_code {
+        Some(purpose_code) => purpose_code.to_string(),
+        None => String::from(""),
+    };
+
+    let uin: String = match &payment_order.uin {
+        Some(uin) => uin.to_string(),
+        None => String::from("0"),
+    };
+
+    let cbc: String = match &payment_order.cbc {
+        Some(cbc) => cbc.to_string(),
+        None => String::from(""),
+    };
+
+    let okato: String = match &payment_order.okato {
+        Some(okato) => okato.to_string(),
+        None => String::from(""),
+    };
+
+    let reason: String = match &payment_order.reason {
+        Some(reason) => reason.to_string(),
+        None => String::from(""),
+    };
+
+    let period: String = match &payment_order.period {
+        Some(period) => period.to_string(),
+        None => String::from(""),
+    };
+
+    let reason_number: String = match &payment_order.reason_number {
+        Some(reason_number) => reason_number.to_string(),
+        None => String::from(""),
+    };
+
+    let reason_date: String = match &payment_order.reason_date {
+        Some(reason_date) => reason_date.to_string(),
+        None => String::from(""),
+    };
+
+    let field_110: String = match &payment_order.field_110 {
+        Some(field_110) => field_110.to_string(),
+        None => String::from(""),
+    };
+
+    let data_texts: [((Mm, Mm), &str, f64, &IndirectFontRef, &Color,  Option<Mm>); 35] = [ 
         (DATA_INCOME_COORD, payment_order.creation_date.as_str(), 9.0, &arial, black_ref, None),
         (DATA_OUTCOME_COORD, payment_order.last_transaction_date.as_str(), 9.0, &arial, black_ref, None),
         (DATA_PAYMENT_ORDER_COORD, payment_order.document_number.as_str(), 9.0, &arial_bold, black_ref, None),
@@ -467,6 +527,16 @@ pub fn create_payment_report(payment_order: &PaymentOrder, path: &str) -> Result
         (DATA_FULL_PURPOSE_COORD, payment_order.purpose.as_str(), 9.0, &arial, black_ref, Some(Mm(180.1))),
         (DATA_PAID, payment_order.last_transaction_date.as_str(), 6.7, &arial, blue_ref, None),
         (HEAD_FULL_NAME_COORD, payment_order.finance_administrator_name.as_str(), 10.0, &arial, black_ref, None),
+        (DATA_PURPOSE_CODE, purpose_code.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_UIN_CODE, uin.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_STATUS, status.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_CBC, cbc.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_OKATO, okato.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_REASON, reason.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_PERIOD, period.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_REASON_NUMBER, reason_number.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_REASON_DATE, reason_date.as_str(), 9.0, &arial, black_ref, None),
+        (DATA_FIELD_110, field_110.as_str(), 9.0, &arial, black_ref, None),
     ];
 
     for &((coords_x, coords_y), length, color, line_type) in lines.iter() {

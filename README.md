@@ -15,35 +15,57 @@ from payment_order_renderer import create_pdf
 
 
 # Функция ожидает словарь следующего вида:
-# Поля 'side_recipient_kpp' и  'literal_sum' необязательные
-# в случае их отсутствия просто передавайте None
+# Необязательные поля, в случае их отсутствия просто передавайте по ключу None:
+# 'side_recipient_kpp'
+# 'literal_sum'
+# 'status'
+# 'purpose_code'
+# 'uin'
+# 'cbc'
+# 'okato'
+# 'reason'
+# 'period'
+# 'reason_number'
+# 'reason_date'
+#  'field_110'
+#
 payment_order_dict = {
-        'creation_date': '2021-07-21T00:00:00+05:00',
-        'last_transaction_date': '2021-07-21',
-        'document_date': '2021-07-21',
-        'document_number': '6000',
-        'priority': '5',
-        'transaction_type_code': '01',
-        'purpose': 'Оплата по договору (номер/дата) без НДС',
-        'payer_kpp': '773601001',
-        'payer_inn': '280267860010',
-        'payer_name': 'ООО "Рога и копыта"',
-        'payer_bank': 'БАНК ПЛАТЕЛЬЩИК',
-        'payer_bank_address': 'г. Москва',
-        'side_recipient_inn': '7839443197',
-        'side_recipient_bank': 'ПАО Сбербанк',
-        'side_recipient_bank_address': 'г. Екатернибург',
-        'side_recipient_name': 'Дядя Толик',
-        'side_recipient_kpp': None,
-        'transaction_sum': '1488.23',
-        'payer_account': '40702810401500014770',
-        'payer_bank_code': '044525989',
-        'payer_cr_account': '30101810845250000999',
-        'side_recipient_bank_code': '044525598',
-        'side_recipient_account': '42306810963160914857',
-        'side_recipient_cr_account': '30101810845250000999',
-        'finance_administrator_name': 'А.В. Прокопчук',
-        'literal_sum': 'одна тысяча четыреста восемьдесят рублей 00 копеек',
+    'creation_date': '21.07.2021',
+    'last_transaction_date': '21.07.2021',
+    'document_date': '21.07.2021',
+    'document_number': '6000',
+    'priority': '5',
+    'transaction_type_code': '01',
+    'purpose': 'Оплата по договору (номер/дата) без НДС',
+    'payer_kpp': '773601001',
+    'payer_inn': '280267860010',
+    'payer_name': 'ООО "БИОШАНЬ"',
+    'payer_bank': 'ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ"',
+    'payer_bank_address': 'г. Москва',
+    'side_recipient_inn': '7839443197',
+    'side_recipient_bank': 'ПАО Сбербанк',
+    'side_recipient_bank_address': 'г. Екатернибург',
+    'side_recipient_name': 'АО Точка',
+    'side_recipient_kpp': '770501001',
+    'transaction_sum': '13636.36',
+    'payer_account': '40702810401500014770',
+    'payer_bank_code': '044525999',
+    'payer_cr_account': '30101810845250000999',
+    'side_recipient_bank_code': '044525593',
+    'side_recipient_account': '42306810963160914857',
+    'side_recipient_cr_account': '30101810845250000999',
+    'finance_administrator_name': 'О.С.Берг',
+    'literal_sum': 'тысяча рублей 00 копеек',
+    'status': '08',
+    'purpose_code': '3',
+    'uin': '1',
+    'cbc': '18210202020061000160',
+    'okato': '65401364000',
+    'reason': 'ТП',
+    'period': 'МС.08.2009',
+    'reason_number': '12',
+    'reason_date':'10.10.2009',
+    'field_110': 'НС',
     }
 
 # Путь до вашего png изображения печати

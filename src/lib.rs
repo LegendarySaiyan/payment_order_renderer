@@ -63,6 +63,27 @@ pub struct PaymentOrder {
     finance_administrator_name: String,
     #[pyo3(get, set)]
     literal_sum: Option<String>,
+
+    #[pyo3(get, set)]
+    status: Option<String>,
+    #[pyo3(get, set)]
+    purpose_code: Option<String>,
+    #[pyo3(get, set)]
+    uin: Option<String>,
+    #[pyo3(get, set)]
+    cbc: Option<String>,
+    #[pyo3(get, set)]
+    okato: Option<String>,
+    #[pyo3(get, set)]
+    reason: Option<String>,
+    #[pyo3(get, set)]
+    period: Option<String>,
+    #[pyo3(get, set)]
+    reason_number: Option<String>,
+    #[pyo3(get, set)]
+    reason_date: Option<String>,
+    #[pyo3(get, set)]
+    field_110: Option<String>,
 }
 
 
@@ -96,6 +117,16 @@ impl PaymentOrder {
         side_recipient_cr_account,
         finance_administrator_name,
         literal_sum,
+        status,
+        purpose_code,
+        uin,
+        cbc,
+        okato,
+        reason,
+        period,
+        reason_number,
+        reason_date,
+        field_110,
     ))]
     fn new(
         creation_date: String,
@@ -128,6 +159,17 @@ impl PaymentOrder {
         side_recipient_cr_account: String,
         finance_administrator_name: String,
         literal_sum: Option<String>,
+
+        status: Option<String>,
+        purpose_code: Option<String>,
+        uin: Option<String>,
+        cbc: Option<String>,
+        okato: Option<String>,
+        reason: Option<String>,
+        period: Option<String>,
+        reason_number: Option<String>,
+        reason_date: Option<String>,
+        field_110: Option<String>,
     ) -> Self {
         PaymentOrder {
             creation_date,
@@ -159,6 +201,17 @@ impl PaymentOrder {
             side_recipient_cr_account,
             finance_administrator_name,
             literal_sum,
+
+            status,
+            purpose_code,
+            uin,
+            cbc,
+            okato,
+            reason,
+            period,
+            reason_number,
+            reason_date,
+            field_110,
         }
     }
 }
@@ -185,13 +238,20 @@ impl PaymentOrder {
 }
 
 
-/// Функция ожидает словарь следующего вида:
-/// Поля 'side_recipient_kpp' и  'literal_sum' необязательные
-/// в случае их отсутствия просто передавайте None
-/// 
-/// 
-/// from payment_order_renderer import create_pdf
-/// 
+/// # Функция ожидает словарь следующего вида:
+// Необязательные поля, в случае их отсутствия просто передавайте по ключу None:
+// 'side_recipient_kpp'
+// 'literal_sum'
+// 'status'
+// 'purpose_code'
+// 'uin'
+// 'cbc'
+// 'okato'
+// 'reason'
+// 'period'
+// 'reason_number'
+// 'reason_date'
+// 'field_110'
 /// 
 /// payment_order_dict = {
 ///     'creation_date': '21.07.2021',
@@ -220,6 +280,16 @@ impl PaymentOrder {
 ///     'side_recipient_cr_account': '30101810845250000999',
 ///     'finance_administrator_name': 'А.В. Прокопчук',
 ///     'literal_sum': 'одна тысяча четыреста восемьдесят рублей 00 копеек',
+///     'status': '08',
+//      'purpose_code': '3',
+//      'uin': '1',
+//      'cbc': '18210202020061000160',
+//      'okato': '65401364000',
+//      'reason': 'ТП',
+//      'period': 'МС.08.2009',
+//      'reason_number': '12',
+//      'reason_date':'10.10.2009',
+//      'field_110': 'НС',
 /// }
 
 /// Путь до вашего png изображения печати
@@ -256,6 +326,16 @@ fn create_pdf(py: Python, payment_order_dict: &PyDict, path: &str) -> PyResult<P
         side_recipient_cr_account: payment_order_dict.get_item("side_recipient_cr_account").unwrap().extract().unwrap(),
         finance_administrator_name: payment_order_dict.get_item("finance_administrator_name").unwrap().extract().unwrap(),
         literal_sum: payment_order_dict.get_item("literal_sum").unwrap().extract().unwrap(),
+        status: payment_order_dict.get_item("status").unwrap().extract().unwrap(),
+        purpose_code: payment_order_dict.get_item("purpose_code").unwrap().extract().unwrap(),
+        uin: payment_order_dict.get_item("uin").unwrap().extract().unwrap(),
+        cbc: payment_order_dict.get_item("cbc").unwrap().extract().unwrap(),
+        okato: payment_order_dict.get_item("okato").unwrap().extract().unwrap(),
+        reason: payment_order_dict.get_item("reason").unwrap().extract().unwrap(),
+        period: payment_order_dict.get_item("period").unwrap().extract().unwrap(),
+        reason_number: payment_order_dict.get_item("reason_number").unwrap().extract().unwrap(),
+        reason_date: payment_order_dict.get_item("reason_date").unwrap().extract().unwrap(),
+        field_110: payment_order_dict.get_item("field_110").unwrap().extract().unwrap(),
     };
 
     payment_order.reform_payment_ending();
